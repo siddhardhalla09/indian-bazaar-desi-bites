@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Staff Orders | Indian Bazaar & Desi Bites</title>
+    <meta name="description" content="Staff order manager for Indian Bazaar and Desi Bites.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+  </head>
+  <body class="admin-page">
+    <header class="admin-header">
+      <a class="brand-mark" href="index.html" aria-label="Back to Indian Bazaar website">
+        <span class="brand-emblem" aria-hidden="true">IB</span>
+        <span>
+          <strong>Indian Bazaar</strong>
+          <small>Desi Bites</small>
+        </span>
+      </a>
+      <nav class="admin-nav" aria-label="Staff navigation">
+        <a href="index.html">Website</a>
+        <button class="icon-button" id="refresh-orders" type="button" aria-label="Refresh orders" title="Refresh orders">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+            <path d="M3 21v-5h5"></path>
+            <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+            <path d="M21 3v5h-5"></path>
+          </svg>
+        </button>
+      </nav>
+    </header>
+
+    <main class="admin-shell">
+      <section class="admin-title" aria-labelledby="admin-title">
+        <p class="eyebrow">Staff</p>
+        <h1 id="admin-title">Order manager</h1>
+      </section>
+
+      <section class="admin-controls" aria-label="Order controls">
+        <label class="key-field">
+          Admin key
+          <input id="admin-key" type="password" autocomplete="current-password" placeholder="Required for live Google Sheet orders">
+        </label>
+        <label>
+          Search
+          <input id="order-search" type="search" placeholder="Name, phone, item, order ID">
+        </label>
+        <label>
+          Status
+          <select id="status-filter">
+            <option value="All">All</option>
+            <option value="New">New</option>
+            <option value="Accepted">Accepted</option>
+            <option value="Ready">Ready</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="admin-metrics" aria-label="Order totals">
+        <article>
+          <span id="metric-new">0</span>
+          <strong>New</strong>
+        </article>
+        <article>
+          <span id="metric-active">0</span>
+          <strong>Active</strong>
+        </article>
+        <article>
+          <span id="metric-done">0</span>
+          <strong>Done</strong>
+        </article>
+        <article>
+          <span id="metric-cancelled">0</span>
+          <strong>Cancelled</strong>
+        </article>
+      </section>
+
+      <p class="admin-status" id="admin-status" role="status"></p>
+
+      <section class="orders-board" id="orders-board" aria-label="Orders"></section>
+    </main>
+
+    <template id="order-card-template">
+      <article class="order-card">
+        <div class="order-card-top">
+          <div>
+            <p class="order-id"></p>
+            <h2></h2>
+          </div>
+          <span class="status-pill"></span>
+        </div>
+        <dl class="order-facts">
+          <div>
+            <dt>Phone</dt>
+            <dd class="order-phone"></dd>
+          </div>
+          <div>
+            <dt>Pickup</dt>
+            <dd class="order-pickup"></dd>
+          </div>
+          <div>
+            <dt>Type</dt>
+            <dd class="order-type"></dd>
+          </div>
+          <div>
+            <dt>Created</dt>
+            <dd class="order-created"></dd>
+          </div>
+        </dl>
+        <ul class="order-items"></ul>
+        <p class="order-notes"></p>
+        <p class="cancel-reason"></p>
+        <div class="order-actions">
+          <button type="button" data-status="Accepted">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            Accept
+          </button>
+          <button type="button" data-status="Ready">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v10l4 2"></path><circle cx="12" cy="12" r="10"></circle></svg>
+            Ready
+          </button>
+          <button type="button" data-status="Completed">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+            Complete
+          </button>
+          <button type="button" data-status="Cancelled" class="cancel-action">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            Cancel
+          </button>
+        </div>
+      </article>
+    </template>
+
+    <script src="config.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

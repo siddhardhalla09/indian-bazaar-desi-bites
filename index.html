@@ -24,6 +24,7 @@
         <a href="#desi-bites">Desi Bites</a>
         <a href="#orders">Order</a>
         <a href="#visit">Visit</a>
+        <a href="admin.html">Staff</a>
       </nav>
       <a class="icon-button call-button" href="tel:+15551234567" aria-label="Call Indian Bazaar">
         <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -217,7 +218,7 @@
           <p class="eyebrow">Pickup request</p>
           <h2 id="orders-title">Build an order request</h2>
           <p>
-            This creates a message the customer can copy, email, or send by WhatsApp. Payment happens separately.
+            This sends a pickup request to the order manager. Payment happens separately.
           </p>
         </div>
 
@@ -269,7 +270,7 @@
                   <path d="m22 2-7 20-4-9-9-4Z"></path>
                   <path d="M22 2 11 13"></path>
                 </svg>
-                Prepare request
+                Send request
               </button>
               <p>No card or online payment is collected on this website.</p>
             </div>
@@ -288,6 +289,7 @@
             </ul>
             <div class="request-output" id="request-output" hidden>
               <h4>Request message</h4>
+              <p class="submission-status" id="submission-status"></p>
               <pre id="request-text"></pre>
               <div class="output-actions">
                 <button class="secondary-action copy-button" type="button" id="copy-request">
@@ -332,9 +334,13 @@
 
     <footer class="site-footer">
       <p>Indian Bazaar & Desi Bites</p>
-      <a href="#top">Back to top</a>
+      <span>
+        <a href="admin.html">Staff orders</a>
+        <a href="#top">Back to top</a>
+      </span>
     </footer>
 
+    <script src="config.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
